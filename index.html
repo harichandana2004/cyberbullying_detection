@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberbullying Comment Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: #007bff;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 50px;
+            border-bottom: #333 3px solid;
+        }
+
+        header h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .form-container {
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: 20%;
+            padding: 10px;
+            background: #fff;
+            color: #2600ff;
+            border:black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background: #0056b3;
+            color:#fff;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .result-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .result-container table th, .result-container table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .result-container table th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cyberbullying Comment Detector</h1>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="/predict">
+                <input type="text" name="comment" placeholder="Input your text here..." required>
+                <button type="submit">Detect Comment</button>
+            </form>
+        </div>
+
+        {% if text and result %}
+        <div class="result-container">
+            <table>
+                <tr>
+                    <th>Text</th>
+                    <th>Prediction Result</th>
+                </tr>
+                <tr>
+                    <td>{{ text }}</td>
+                    <td>{{ result }}</td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
